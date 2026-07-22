@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cape Town Study Abroad | ePortfolio</title>
+  <meta name="description" content="A reflective ePortfolio documenting a 6-week study abroad experience in Cape Town, South Africa through UF's International Center." />
+
+  <!-- Google Fonts: Poppins for headings, Inter for body -->
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap)" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS
+       Edit these variables to re-theme the whole site at once.
+       ========================================================= */
+    :root {
+      --uf-blue: #0021A5;      /* UF primary blue  */
+      --uf-orange: #FA4616;    /* UF primary orange */
+      --sky: #1B98E0;          /* accent           */
+      --ink: #1c2230;          /* body text        */
+      --muted: #5d6472;        /* secondary text   */
+      --bg: #ffffff;
+      --bg-soft: #f5f7fb;      /* alternating band */
+      --card: #ffffff;
+      --border: #e6e9f0;
+      --shadow: 0 10px 30px rgba(0, 33, 165, 0.08);
+      --radius: 16px;
+      --maxw: 1120px;
+    }
+
+    /* =========================================================
+       BASE / RESET
+       ========================================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: "Poppins", sans-serif; line-height: 1.2; }
+
+    a { color: var(--uf-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* Reusable centered container */
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* Section vertical rhythm */
+    section { padding: 88px 0; }
+    .section-soft { background: var(--bg-soft); }
+
+    /* Section heading block */
+    .section-head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+    .eyebrow {
+      display: inline-block;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--uf-orange);
+      margin-bottom: 12px;
+    }
+    .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--ink); }
+    .section-head p { color: var(--muted); margin-top: 14px; font-size: 1.05rem; }
+
+    /* =========================================================
+       NAVBAR (sticky, blurs on scroll)
+       ========================================================= */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 66px;
+    }
+    .brand {
+      font-family: "Poppins", sans-serif; font-weight: 700; font-size: 1.05rem;
+      color: var(--uf-blue); display: flex; align-items: center; gap: 8px;
+    }
+    .brand span { color: var(--uf-orange); }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--ink); font-weight: 500; font-size: 0.95rem;
+      position: relative; padding: 4px 0;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 2px; background: var(--uf-orange);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover { text-decoration: none; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Mobile menu toggle */
+    .nav-toggle {
+      display: none; background: none; border: 0; cursor: pointer;
+      font-size: 1.5rem; color: var(--uf-blue);
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+    .hero {
+      position: relative; min-height: 82vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff; overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      /* Swap this URL for your own hero image if you like. */
+      background: url("images/cape-town-hero.png") center/cover no-repeat;
+      transform: scale(1.05);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,33,165,0.35) 0%, rgba(12,18,40,0.72) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 24px; }
+    .hero .kicker {
+      font-family: "Poppins", sans-serif; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      font-size: 0.85rem; color: #ffd9cc; margin-bottom: 18px;
+    }
+    .hero h1 { font-size: clamp(2.3rem, 6vw, 4rem); margin-bottom: 18px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .hero p { font-size: clamp(1rem, 2.2vw, 1.25rem); color: #f0f2f8; margin-bottom: 32px; }
+
+    .btn {
+      display: inline-block; font-family: "Poppins", sans-serif; font-weight: 600;
+      padding: 13px 28px; border-radius: 999px; font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; }
+    .btn-primary { background: var(--uf-orange); color: #fff; box-shadow: 0 8px 20px rgba(250,70,22,0.35); }
+    .btn-ghost { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.5); margin-left: 12px; }
+
+    /* Bouncing scroll cue */
+    .scroll-cue {
+      position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+      z-index: 2; color: #fff; font-size: 1.4rem; animation: bounce 1.8s infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,10px);} }
+
+    /* =========================================================
+       OVERVIEW  (two-column intro + quick facts)
+       ========================================================= */
+    .overview-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;
+    }
+    .overview-text p { color: var(--muted); margin-bottom: 16px; }
+    .overview-text p strong { color: var(--ink); }
+
+    .facts {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px;
+    }
+    .facts h3 { font-size: 1.1rem; margin-bottom: 18px; color: var(--uf-blue); }
+    .fact { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+    .fact:last-child { border-bottom: 0; }
+    .fact .ico { font-size: 1.3rem; }
+    .fact .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+    .fact .value { font-weight: 600; }
+
+    /* =========================================================
+       PROJECT / APPLICATION WALKTHROUGH
+       ========================================================= */
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .project-media {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+      background: #000;
+    }
+    .project-media img, .project-media video { width: 100%; display: block; }
+
+    .steps { list-style: none; counter-reset: step; margin-top: 22px; }
+    .steps li { position: relative; padding-left: 52px; margin-bottom: 22px; }
+    .steps li::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: 0;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--uf-blue); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Poppins", sans-serif; font-weight: 600;
+    }
+    .steps li h4 { margin-bottom: 2px; }
+    .steps li p { color: var(--muted); font-size: 0.95rem; }
+
+    /* =========================================================
+       WEEKLY LESSONS  (timeline)
+       ========================================================= */
+    .timeline { position: relative; max-width: 820px; margin: 0 auto; }
+    .timeline::before {
+      content: ""; position: absolute; left: 20px; top: 0; bottom: 0;
+      width: 3px; background: linear-gradient(var(--uf-blue), var(--sky));
+    }
+    .week {
+      position: relative; padding-left: 64px; margin-bottom: 34px;
+    }
+    .week::before {
+      content: ""; position: absolute; left: 11px; top: 6px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--uf-orange); border: 4px solid #fff;
+      box-shadow: 0 0 0 3px var(--uf-orange);
+    }
+    .week-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 22px 24px; transition: transform 0.2s ease;
+    }
+    .week-card:hover { transform: translateX(4px); }
+    .week-tag {
+      display: inline-block; font-family: "Poppins", sans-serif; font-weight: 600;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--uf-blue); background: #e8edff;
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
+    }
+    .week-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+    .week-card p { color: var(--muted); font-size: 0.97rem; }
+
+    /* =========================================================
+       PHOTO GALLERY  (masonry-ish grid + lightbox)
+       ========================================================= */
+    .gallery {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .gallery figure {
+      position: relative; overflow: hidden; border-radius: var(--radius);
+      cursor: pointer; box-shadow: var(--shadow); background: #ddd;
+    }
+    .gallery img {
+      width: 100%; height: 260px; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.08); }
+    .gallery figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 14px; color: #fff; font-size: 0.9rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      opacity: 0; transform: translateY(10px); transition: all 0.3s ease;
+    }
+    .gallery figure:hover figcaption { opacity: 1; transform: translateY(0); }
+
+    /* Lightbox overlay */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(8,10,20,0.92);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 28px; color: #fff;
+      font-size: 2.2rem; cursor: pointer; line-height: 1;
+    }
+
+    /* =========================================================
+       REFLECTION
+       ========================================================= */
+    .reflection-card {
+      max-width: 860px; margin: 0 auto; background: var(--card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 44px;
+    }
+    .reflection-card p { color: var(--muted); margin-bottom: 18px; }
+    .reflection-card p:first-of-type { font-size: 1.15rem; color: var(--ink); }
+    blockquote {
+      border-left: 4px solid var(--uf-orange);
+      padding: 6px 0 6px 22px; margin: 26px 0;
+      font-family: "Poppins", sans-serif; font-style: italic;
+      font-size: 1.15rem; color: var(--ink);
+    }
+
+    /* =========================================================
+       ACKNOWLEDGMENTS + FOOTER
+       ========================================================= */
+    .thanks {
+      max-width: 760px; margin: 0 auto; text-align: center;
+      background: linear-gradient(135deg, var(--uf-blue), #0a3fd6);
+      color: #fff; border-radius: var(--radius); padding: 44px 40px;
+      box-shadow: 0 20px 40px rgba(0,33,165,0.25);
+    }
+    .thanks h2 { color: #fff; margin-bottom: 16px; }
+    .thanks p { color: #dfe6ff; font-size: 1.08rem; }
+    .thanks strong { color: #fff; }
+
+    footer {
+      background: #0c1224; color: #aeb6cc; text-align: center;
+      padding: 40px 24px; font-size: 0.92rem;
+    }
+    footer a { color: #fff; }
+    .socials { margin: 14px 0 8px; display: flex; gap: 20px; justify-content: center; }
+    .socials a { color: #cdd4e8; font-weight: 500; }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 860px) {
+      section { padding: 64px 0; }
+      .overview-grid, .project-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .nav-links {
+        position: absolute; top: 66px; left: 0; right: 0;
+        background: #fff; flex-direction: column; gap: 0;
+        border-bottom: 1px solid var(--border);
+        max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+      }
+      .nav-links.show { max-height: 340px; }
+      .nav-links li { border-top: 1px solid var(--border); }
+      .nav-links a { display: block; padding: 14px 24px; }
+      .nav-toggle { display: block; }
+      .btn-ghost { margin-left: 0; margin-top: 12px; }
+    }
+    @media (max-width: 520px) {
+      .gallery { grid-template-columns: 1fr; }
+      .reflection-card, .thanks { padding: 30px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Cape Town <span>· ePortfolio</span></div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#weeks">Weekly Lessons</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+        <li><a href="#thanks">Thank You</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="top">
+    <div class="hero-content">
+      <p class="kicker">6-Week Study Abroad · UF International Center</p>
+      <h1>My Cape Town Experience</h1>
+      <p>Reflecting on six transformative weeks of international engagement, collaboration, and growth in Cape Town, South Africa.</p>
+      <a href="#overview" class="btn btn-primary">Explore the Journey</a>
+      <a href="#project" class="btn btn-ghost">See the Project</a>
+    </div>
+    <a href="#overview" class="scroll-cue" aria-label="Scroll down">⌄</a>
+  </header>
+
+  <!-- ================= OVERVIEW ================= -->
+  <section id="overview">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Journey</span>
+        <h2>Trip &amp; Project Overview</h2>
+        <p>A snapshot of where I went, what I worked on, and why it mattered.</p>
+      </div>
+
+      <div class="overview-grid">
+        <div class="overview-text">
+          <p>
+            <strong>[YOUR NAME HERE]</strong> — a [YOUR MAJOR] student at the University of Florida —
+            spent six weeks studying abroad in <strong>Cape Town, South Africa</strong> through the
+            UF International Center (UFIC) in partnership with EDU Africa. This ePortfolio documents
+            that experience: the community I worked alongside, the application my team developed, and
+            the personal and professional lessons I carried home.
+          </p>
+          <p>
+            Over the course of the program, I collaborated with a local host organization to
+            <strong>design and build a software application</strong> addressing a real community need.
+            Beyond the technical work, the trip immersed me in South African culture, history, and
+            everyday life — from the vibrant streets of the city to the breathtaking landscapes
+            beneath Table Mountain.
+          </p>
+          <p>
+            The goal of this portfolio is to <strong>reflect on my international engagement</strong> and
+            connect it to my academic and professional goals — capturing not just what I did, but how
+            it changed the way I think about technology, collaboration, and the world.
+          </p>
+        </div>
+
+        <!-- Quick-facts card: edit values to match your trip -->
+        <aside class="facts">
+          <h3>At a Glance</h3>
+          <div class="fact">
+            <span class="ico">📍</span>
+            <div><div class="label">Location</div><div class="value">Cape Town, South Africa</div></div>
+          </div>
+          <div class="fact">
+            <span class="ico">🗓️</span>
+            <div><div class="label">Duration</div><div class="value">6 Weeks · [Summer 2026]</div></div>
+          </div>
+          <div class="fact">
+            <span class="ico">🎓</span>
+            <div><div class="label">Program</div><div class="value">UF International Center &amp; EDU Africa</div></div>
+          </div>
+          <div class="fact">
+            <span class="ico">💻</span>
+            <div><div class="label">Focus</div><div class="value">Community-Based App Development</div></div>
+          </div>
+          <div class="fact">
+            <span class="ico">🤝</span>
+            <div><div class="label">Partner Org</div><div class="value">[Organization You Worked With]</div></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECT / APP WALKTHROUGH ================= -->
+  <section id="project" class="section-soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What We Built</span>
+        <h2>Application Walkthrough</h2>
+        <p>A guided tour of the app my team designed and developed during the program.</p>
+      </div>
+
+      <div class="project-grid">
+        <!-- Media: swap for a screenshot, GIF, or demo video of your app -->
+        <div class="project-media">
+          <img src="images/app-screenshot.png"
+               alt="Screenshot of the application developed during the program"
+               onerror="this.src='[placehold.co](https://placehold.co/800x560/0021A5/ffffff?text=App+Screenshot)'" />
+          <!--
+            To embed a video demo instead, replace the <img> above with:
+            <video controls poster="images/app-poster.png">
+              <source src="images/app-demo.mp4" type="video/mp4">
+            </video>
+          -->
+        </div>
+
+        <div>
+          <h3 style="font-size:1.35rem; margin-bottom:6px;">[Application Name]</h3>
+          <p style="color:var(--muted);">
+            [One or two sentences describing what the app does, who it's for, and the problem
+            it solves for the partner organization.]
+          </p>
+
+          <ol class="steps">
+            <li>
+              <h4>The Problem</h4>
+              <p>[Describe the community need or challenge the app addresses.]</p>
+            </li>
+            <li>
+              <h4>Our Approach</h4>
+              <p>[Explain the solution, your tech stack, and how the team divided the work.]</p>
+            </li>
+            <li>
+              <h4>Key Features</h4>
+              <p>[List 2–3 standout features and what makes them useful.]</p>
+            </li>
+            <li>
+              <h4>Impact &amp; Next Steps</h4>
+              <p>[Share the outcome, feedback received, and how it could grow.]</p>
+            </li>
+          </ol>
+
+          <a href="#" class="btn btn-primary" style="margin-top:8px;">View Live Demo / Repo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WEEKLY LESSONS (TIMELINE) ================= -->
+  <section id="weeks">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Week by Week</span>
+        <h2>Lessons Gained Along the Way</h2>
+        <p>Each week brought a new challenge, a new perspective, and a lesson worth keeping.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="week">
+          <div class="week-card">
+            <span class="week-tag">Week 1 · Arrival</span>
+            <h3>Adapting to a New Environment</h3>
+            <p>[What surprised you first? How did you settle in, meet your team, and get oriented to the city and the program?]</p>
+          </div>
+        </div>
+        <div class="week">
+          <div class="week-card">
+            <span class="week-tag">Week 2 · Discovery</span>
+            <h3>Understanding the Community Need</h3>
+            <p>[How did you learn about the partner organization and define the problem the app would solve?]</p>
+          </div>
+        </div>
+        <div class="week">
+          <div class="week-card">
+            <span class="week-tag">Week 3 · Design</span>
+            <h3>From Idea to Prototype</h3>
+            <p>[What did you learn about planning, teamwork, or design thinking as the concept took shape?]</p>
+          </div>
+        </div>
+        <div class="week">
+          <div class="week-card">
+            <span class="week-tag">Week 4 · Build</span>
+            <h3>Overcoming Technical Challenges</h3>
+            <p>[Describe a technical hurdle and what solving it taught you as a developer.]</p>
+          </div>
+        </div>
+        <div class="week">
+          <div class="week-card">
+            <span class="week-tag">Week 5 · Refine</span>
+            <h3>Feedback &amp; Iteration</h3>
+            <p>[What did testing and feedback teach you about building for real users?]</p>
+          </div>
+        </div>
+        <div class="week">
+          <div class="week-card">
+            <span class="week-tag">Week 6 · Reflect</span>
+            <h3>Delivering &amp; Saying Goodbye</h3>
+            <p>[What did presenting your work and leaving Cape Town teach you about the whole experience?]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PHOTO GALLERY ================= -->
+  <section id="gallery" class="section-soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Moments</span>
+        <h2>Photo Gallery</h2>
+        <p>Snapshots from six unforgettable weeks. Click any photo to view it larger.</p>
+      </div>
+
+      <!--
+        GALLERY:
+        Drop your photos into an /images folder and update the src + captions.
+        The onerror fallback shows a placeholder so the layout never breaks.
+      -->
+      <div class="gallery" id="gallery">
+        <figure><img src="images/photo1.jpg" alt="Cape Town photo 1" onerror="this.src='[placehold.co](https://placehold.co/600x400/1B98E0/ffffff?text=Photo+1)'"><figcaption>[Caption for photo 1]</figcaption></figure>
+        <figure><img src="images/photo2.jpg" alt="Cape Town photo 2" onerror="this.src='[placehold.co](https://placehold.co/600x400/FA4616/ffffff?text=Photo+2)'"><figcaption>[Caption for photo 2]</figcaption></figure>
+        <figure><img src="images/photo3.jpg" alt="Cape Town photo 3" onerror="this.src='[placehold.co](https://placehold.co/600x400/0021A5/ffffff?text=Photo+3)'"><figcaption>[Caption for photo 3]</figcaption></figure>
+        <figure><img src="images/photo4.jpg" alt="Cape Town photo 4" onerror="this.src='[placehold.co](https://placehold.co/600x400/FA4616/ffffff?text=Photo+4)'"><figcaption>[Caption for photo 4]</figcaption></figure>
+        <figure><img src="images/photo5.jpg" alt="Cape Town photo 5" onerror="this.src='[placehold.co](https://placehold.co/600x400/0021A5/ffffff?text=Photo+5)'"><figcaption>[Caption for photo 5]</figcaption></figure>
+        <figure><img src="images/photo6.jpg" alt="Cape Town photo 6" onerror="this.src='[placehold.co](https://placehold.co/600x400/1B98E0/ffffff?text=Photo+6)'"><figcaption>[Caption for photo 6]</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REFLECTION ================= -->
+  <section id="reflection">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Looking Back</span>
+        <h2>Reflection Summary</h2>
+        <p>The bigger picture — how this experience shaped me personally and professionally.</p>
+      </div>
+
+      <div class="reflection-card">
+        <p>
+          [Open with your strongest reflection: what this experience meant to you as a whole.]
+        </p>
+        <p>
+          [Middle paragraph: connect the trip to your <strong>academic and professional goals</strong>.
+          How did working on a real project abroad change how you approach problem-solving, teamwork,
+          or your career direction?]
+        </p>
+        <blockquote>
+          "[A short, memorable takeaway or quote that captures your experience in one line.]"
+        </blockquote>
+        <p>
+          [Closing paragraph: what you'll carry forward, how you've grown, and why international
+          engagement matters to you now.]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACKNOWLEDGMENTS ================= -->
+  <section id="thanks" class="section-soft">
+    <div class="container">
+      <div class="thanks">
+        <h2>With Gratitude 🙏</h2>
+        <p>
+          Special thank you to <strong>Dr. Sanethia Thomas</strong>, <strong>Ping Neo</strong>,
+          <strong>Naomi Harrell</strong>, <strong>EDU Africa</strong>, and
+          <strong>[Organization You Worked With]</strong> for making this experience possible
+          and unforgettable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="brand" style="justify-content:center; color:#fff;">Cape Town <span style="color:var(--uf-orange);">· ePortfolio</span></div>
+      <div class="socials">
+        <a href="mailto:youremail@ufl.edu">Email</a>
+        <a href="[linkedin.com](https://www.linkedin.com/in/your-profile)" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="[github.com](https://github.com/your-username)" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p>© <span id="year"></span> [Your Name] · University of Florida International Center</p>
+    </div>
+  </footer>
+
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</span>
+    <img src="" alt="Enlarged gallery image" id="lightboxImg" />
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+       Small, dependency-free scripts for interactivity.
+       ========================================================= -->
+  <script>
+    // --- 1. Mobile nav toggle ---
+    const navToggle = document.getElementById("navToggle");
+    const navLinks  = document.getElementById("navLinks");
+    navToggle.addEventListener("click", () => navLinks.classList.toggle("show"));
+    // Close the menu after tapping a link (mobile)
+    navLinks.querySelectorAll("a").forEach(link =>
+      link.addEventListener("click", () => navLinks.classList.remove("show"))
+    );
+
+    // --- 2. Photo gallery lightbox ---
+    const lightbox      = document.getElementById("lightbox");
+    const lightboxImg   = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll("#gallery img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;      // reuse the same (already loaded) image
+        lightbox.classList.add("open");
+      });
+    });
+    // Close on X, on background click, or with the Escape key
+    function closeLightbox() { lightbox.classList.remove("open"); }
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+
+    // --- 3. Auto-update footer year ---
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
