@@ -6,24 +6,20 @@
   <title>Cape Town Study Abroad | Kyra Paim ePortfolio</title>
   <meta name="description" content="A reflective ePortfolio documenting a 6-week study abroad experience in Cape Town, South Africa through UF's International Center." />
 
-  <!-- Google Fonts: Poppins for headings, Inter for body -->
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
-  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap)" rel="stylesheet" />
-
   <style>
     /* =========================================================
        DESIGN TOKENS
        Edit these variables to re-theme the whole site at once.
        ========================================================= */
     :root {
-      --uf-blue: #0021A5;      /* UF primary blue  */
-      --uf-orange: #FA4616;    /* UF primary orange */
-      --sky: #1B98E0;          /* accent           */
-      --ink: #1c2230;          /* body text        */
-      --muted: #5d6472;        /* secondary text   */
-      --bg: #ffffff;
-      --bg-soft: #f5f7fb;      /* alternating band */
+      /* Colors */
+      --uf-blue: #6b0749;
+      --uf-orange: #df74bb;
+      --sky: #350852;
+      --ink: #060606;
+      --muted: #0a0a0b;
+      --bg: #fdfeff;
+      --bg-soft: #f3f6ef;
       --card: #ffffff;
       --border: #e6e9f0;
       --shadow: 0 10px 30px rgba(0, 33, 165, 0.08);
@@ -39,14 +35,18 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       color: var(--ink);
       background: var(--bg);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4 { font-family: "Poppins", sans-serif; line-height: 1.2; }
+    h1,
+    h2,
+    h3,
+    h4 {
+    font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; line-height: 1.2; }
 
     a { color: var(--uf-blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -64,7 +64,7 @@
     .section-head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
     .eyebrow {
       display: inline-block;
-      font-family: "Poppins", sans-serif;
+      font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.12em;
@@ -89,7 +89,7 @@
       height: 66px;
     }
     .brand {
-      font-family: "Poppins", sans-serif; font-weight: 700; font-size: 1.05rem;
+      font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 1.05rem;
       color: var(--uf-blue); display: flex; align-items: center; gap: 8px;
     }
     .brand span { color: var(--uf-orange); }
@@ -133,7 +133,7 @@
     }
     .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 24px; }
     .hero .kicker {
-      font-family: "Poppins", sans-serif; font-weight: 600;
+      font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: 600;
       letter-spacing: 0.18em; text-transform: uppercase;
       font-size: 0.85rem; color: #ffd9cc; margin-bottom: 18px;
     }
@@ -141,7 +141,7 @@
     .hero p { font-size: clamp(1rem, 2.2vw, 1.25rem); color: #f0f2f8; margin-bottom: 32px; }
 
     .btn {
-      display: inline-block; font-family: "Poppins", sans-serif; font-weight: 600;
+      display: inline-block; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: 600;
       padding: 13px 28px; border-radius: 999px; font-size: 0.95rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -195,7 +195,7 @@
       width: 34px; height: 34px; border-radius: 50%;
       background: var(--uf-blue); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-family: "Poppins", sans-serif; font-weight: 600;
+      font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: 600;
     }
     .steps li h4 { margin-bottom: 2px; }
     .steps li p { color: var(--muted); font-size: 0.95rem; }
@@ -224,7 +224,7 @@
     }
     .week-card:hover { transform: translateX(4px); }
     .week-tag {
-      display: inline-block; font-family: "Poppins", sans-serif; font-weight: 600;
+      display: inline-block; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: 600;
       font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--uf-blue); background: #e8edff;
       padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
@@ -281,7 +281,7 @@
     blockquote {
       border-left: 4px solid var(--uf-orange);
       padding: 6px 0 6px 22px; margin: 26px 0;
-      font-family: "Poppins", sans-serif; font-style: italic;
+      font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-style: italic;
       font-size: 1.15rem; color: var(--ink);
     }
 
@@ -359,7 +359,6 @@
       <a href="#overview" class="btn btn-primary">Trip Overview</a>
       <a href="#project" class="btn btn-ghost">See the Project</a>
     </div>
-    <a href="#overview" class="scroll-cue" aria-label="Scroll down">⌄</a>
   </header>
 
   <!-- ================= OVERVIEW ================= -->
@@ -469,7 +468,6 @@
             </li>
           </ol>
 
-          <a href="#" class="btn btn-primary" style="margin-top:8px;">View Live Demo / Repo</a>
         </div>
       </div>
     </div>
@@ -523,7 +521,7 @@
               African Communities. My group consisted of 2 UF and 3 Curro Delft students, and together 
               our idea won first place. My classmate and I took the time to listen to the students and 
               understand relevant struggles they experience themselves. It taught us as tourists in a 
-              foreign country to not create what we think people need, but attend to people's needs when creating. </p>
+              foreign country to not create what we think people need, but to attend to people's needs when creating. </p>
           </div>
         </div>
         <div class="week">
@@ -539,8 +537,8 @@
                   we wanted our chatbot to have consistent responses in style, tone, and relevance. To ensure this, we tested
                   a plethora of questions and conversations to purposefully find irregularties in our product. In addition, this week also
                   focused on the transfer of website content including photos and links. I began working on User Interface (UI) elements and asking the client
-                  their opinions on colors, fonts, and layouts. This week, our group visted the Amazon Web Services (AWS) Skills Center in Cape Town. As a group, we participated in 
-                  workshops and a prototyping contest utilizing their Kiro AI IDE tool. I collaborated with a team of peers to brainstorm and use AI to bring an idea into fruition.
+                  their opinions on colors, fonts, and layouts. This week, our group visted the Amazon Web Services (AWS) Skills Center in Cape Town. Together, we participated in 
+                  workshops and a prototyping contest utilizing their Kiro AI IDE tool. I collaborated with a team of peers to brainstorm and leverage AI to bring an idea into fruition.
                   Finalizing our protoype, we presented a product showcase to peers and AWS instructors.
 
                    </p>
@@ -566,15 +564,15 @@
             <h3>Delivering &amp; Saying Goodbye</h3>
             <p>As a team, we completed our final presentation showcasing our Princess Vlei Chatbot Assistant, and our prototyped refactored website.
               Although our program was ending, progress was still left to be made with the website refactor. The Princess Vlei Assistant was finished and
-              avaliable on the old website for the time being. Saying goodbye to people I was seeing everyday for six weeks was the hardest part. Over time, I grew
+              avaliable on the old website for the time being. Our clients were pleased with our completed chatbot and the progress of our new website. They felt prioritized when we demonstrated an admin page
+              specifically designed for the nontechnical author of the website. The admin page makes an easier transition to a new website
+              so the client can upload and edit content in a form they are accustomed to. Being so used to using drag and drop website builders, we did not want to
+              overwhelm the client with new technologies. Therefore, we took inspiration from these layouts to build something similar but specific for the new Princess Vlei
+              website and their staff. Overall, saying goodbye to people I was seeing everyday for six weeks was the hardest part. Over time, I grew
               strong bonds with my peers. Together, we collaborated, explored, and joked. Interning abroad allowed the perfect mix
               of responsibility, impact, and fun. I was able to collaborate and create a project with a purpose. I was able to show up as both a peer and a friend.
               Watching everyone else on the program build well-thoughout projects made me proud of the work we completed as a group.
-              Our clients were pleased with our completed chatbot and the progress of our new website. They felt prioritized when we demonstrated an admin page
-              specifically designed for the nontechnical author of the website. The admin page makes an easier transition to a new website for the client
-              so they can upload and edit content in a form they are accustomed to. Being so used to using drag and drop website builders, we did not want to
-              overwhelm the client with new technologies. Therefore, we took inspiration from these layouts to build something similar but specific for the new Princess Vlei
-              website and their staff.
+              
             </p>
           </div>
         </div>
