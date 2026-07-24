@@ -193,7 +193,20 @@
       box-shadow: var(--shadow); border: 1px solid var(--border);
       background: #000;
     }
-    .project-media img, .project-media video { width: 100%; display: block; }
+    .project-media img, .project-preview {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.project-preview iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: block;
+}
 
     .steps { list-style: none; counter-reset: step; margin-top: 22px; }
     .steps li { position: relative; padding-left: 52px; margin-bottom: 22px; }
@@ -207,6 +220,160 @@
     }
     .steps li h4 { margin-bottom: 2px; }
     .steps li p { color: var(--muted); font-size: 0.95rem; }
+    /* =========================================================
+   OLD WEBSITE SCREENSHOT SLIDESHOW
+   ========================================================= */
+
+.website-showcase {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.website-showcase-header {
+  max-width: 720px;
+  margin: 0 auto 30px;
+}
+
+.website-showcase-header h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.website-showcase-header p {
+  color: var(--muted);
+}
+
+.website-slider {
+  position: relative;
+  max-width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--card);
+}
+
+.website-slide {
+  display: none;
+}
+
+.website-slide.active {
+  display: block;
+}
+
+.website-slide img {
+  width: 100%;
+  height: 540px;
+  object-fit: contain;
+  background: #f2f2f2;
+}
+
+.website-slide-caption {
+  padding: 14px 20px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  background: var(--card);
+}
+
+/* Slideshow arrows */
+.website-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.website-slider-arrow:hover {
+  background: var(--uf-orange);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.website-slider-prev {
+  left: 18px;
+}
+
+.website-slider-next {
+  right: 18px;
+}
+
+/* Dots below slideshow */
+.website-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.website-slider-dot {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.website-slider-dot.active {
+  background: var(--uf-orange);
+  transform: scale(1.2);
+}
+
+/* New website button */
+.website-button-wrap {
+  margin-top: 30px;
+}
+
+.website-button {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: var(--uf-blue);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0, 33, 165, 0.2);
+}
+
+.website-button:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 33, 165, 0.28);
+}
+
+@media (max-width: 700px) {
+  .website-slide img {
+    height: 350px;
+  }
+
+  .website-slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .website-slider-prev {
+    left: 10px;
+  }
+
+  .website-slider-next {
+    right: 10px;
+  }
+}
 
     /* =========================================================
        WEEKLY LESSONS  (timeline)
@@ -345,7 +512,7 @@
   <!-- ================= NAVBAR ================= -->
   <nav class="nav">
     <div class="container nav-inner">
-      <div class="brand">Kyra Paim <span>· ePortfolio</span></div>
+      <div class="brand">Kyra Paim <span>· Study Abroad ePortfolio</span></div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#overview">Overview</a></li>
@@ -375,7 +542,6 @@
       <div class="section-head">
         <span class="eyebrow">The Journey</span>
         <h2>Trip Description and Overview</h2>
-        <p>Where I went, what I worked on, and why it mattered.</p>
       </div>
 
       <div class="overview-grid">
@@ -383,13 +549,11 @@
           <p>
             <strong>Hello, I'm Kyra Paim!</strong> I'm pursuing a Computer Science degree with a minor in Brazilian Portuguese at the University of Florida.
             Over the span of six weeks, I studied abroad in <strong>Cape Town, South Africa</strong> through the
-            UF International Center's (UFIC) partnership with EDU Africa. This ePortfolio documents
-            the community I worked alongside, the application my team developed, and
-            the personal and professional lessons I carried home.
-          </p>
+            UF International Center's (UFIC) partnership with EDU Africa.
           <p>
-            Over the course of this internship, I worked as a team lead in a collaboration with a local nonprofit organization, <strong>the Princess Vlei Forum</strong>, to
-            integrate an AI chatbot into their website. As a nonprofit organization, they rely heavily on the local community and volunteers to keep the space vitalized. Building a chatbot for their website allowed for users to easily find out how they can get involved, or facts about the rich biodiversity at the Vlei. We had the privledge of stretching this goal further, and redeveloped their website to save costs and enagage users further.
+            Over the course of this internship, I worked as a team lead in a collaboration with a local nonprofit organization, <strong>the Princess Vlei Forum.</strong> My group 
+            integrated an AI chatbot into their website to boost engagement with the local community and volunteers that keep the space vitalized. Building a chatbot allowed for users
+             to easily find out how they can get involved, or facts about the rich biodiversity at the Vlei. We had the priviledge of stretching this goal further, and redeveloped their website to save costs and engage users further.
             Beyond the technical work, the trip immersed me in South African culture, history, and
             everyday life. From the stunning view of Table Mountain every morning to the community and friendships I built overseas, this study abroad was one of the most enriching experiences of my life.
           </p>
@@ -437,19 +601,17 @@
         <p>A visual showcase of the chatbot my team designed and developed during the program.</p>
       </div>
 
-      <div class="project-grid">
-        <!-- Media: swap for a screenshot, GIF, or demo video of your app -->
-        <div class="project-media">
-          <img src="images/app-screenshot.png"
-               alt="Screenshot of the application developed during the program"
-               onerror="this.src='[placehold.co](https://placehold.co/800x560/0021A5/ffffff?text=App+Screenshot)'" />
-          <!--
-            To embed a video demo instead, replace the <img> above with:
-            <video controls poster="images/app-poster.png">
-              <source src="images/app-demo.mp4" type="video/mp4">
-            </video>
-          -->
-        </div>
+      <div class="project-preview">
+
+    <div class="project-preview">
+  <iframe
+    src="https://www.youtube.com/embed/6r7kFXxTG1A"
+    title="Princess Vlei Assistant Demo"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+</div>
 
         <div>
           <h3 style="font-size:1.35rem; margin-bottom:6px;">The Princess Vlei Assistant</h3>
@@ -464,20 +626,125 @@
             </li>
             <li>
               <h4>Our Approach</h4>
-              <p>We needed to integrate an AI chatbot into a dated website that depended on a buggy website builder. Working for a nonprofit, we had to make the chatbot free, reliable, and easy to manage for our non-technical clients. Our team applied for a Microsoft Azure Grant for Nonprofits, and succeeded in recieving $2000 of free credits every year for the Princess Vlei Forum. This chatbot was integrated into the original website, and our team rebuilt and transferred the content to a new website. The goal of the refactorting was to take away the website builder dependancy, reduce costs for the organization, and build a cleaner, user-friendly platform to support community engagement.   </p>
+              <p>We needed to integrate an AI chatbot into a dated website that depended on a buggy website builder. Working for a nonprofit, we had to make the chatbot free, reliable, and easy to manage for our non-technical clients. Our team applied for a Microsoft Azure Grant for Nonprofits, and succeeded in receiving $2000 of free credits every year for the Princess Vlei Forum. This chatbot was integrated into the original website, and our team rebuilt and transferred the content to a new website. The goal of the refactoring was to take away the website builder dependancy, reduce costs for the organization, and build a cleaner, user-friendly platform to support community engagement.   </p>
             </li>
             <li>
               <h4>Key Features</h4>
-              <p>Our chatbot and new website is cost free! The system prompt limits the DeepSeek model to a certain number of credits a day, and once that credit is reached the Princess Vlei Assistant falls back on the free CloudFlare AI model. This ensures the credit for $2000 worth of tokens isn't exceeded, allowing for the chatbot to continue being cost free for the client but still avaliable at all times. Users can speak with the chatbot to find out more about the Vlei and how they can get involved. People who are curious about wildlife can be linked directly to INaturalist findings of animals at the Vlei and when these sighting were recorded. Refactoring the website and hosting on CloudFlare Pages took away extra subscription costs the client was paying towards editing and hosting their site. To accomodate their nontechnical admin, we built a custon admin page for the Forum's website author to easily upload new articles and information for the chatbot.</p>
+              <p>Our chatbot and new website are cost free! The system prompt limits the DeepSeek model to a certain number of credits a day, and once that credit is reached the Princess Vlei Assistant falls back on the free CloudFlare AI model. This ensures the credit for $2000 worth of tokens isn't exceeded, allowing for the chatbot to continue being cost free for the client but still available at all times. Users can speak with the chatbot to find out more about the Vlei and how they can get involved. People who are curious about wildlife can be linked directly to INaturalist findings of animals at the Vlei and when these sightings were recorded. Refactoring the website and hosting on CloudFlare Pages took away extra subscription costs the client was paying towards editing and hosting their site. To accommodate our nontechnical client, we built a custom admin page for the Forum's website author to easily upload new articles and information for the chatbot.</p>
             </li>
             <li>
               <h4>Impact</h4>
-              <p>After 6 weeks, my team built a reliable chatbot assistant focused on answering questions soley about the Vlei. Refactorting the site off of a website builder made Princess Vlei's website engaging, organized, and modern. We built around nontechnical admin, and established a way for the client to have a comfortable transition to a new platform. Overall, the chatbot and new website serves to attract potential visitors and volunteers through an easier user experience. </p>
+              <p>After 6 weeks, my team built a reliable chatbot assistant focused on answering questions solely about the Vlei. Refactoring the site off of a website builder made Princess Vlei's website engaging, organized, and modern. We built around nontechnical admin, and established a way for the client to have a comfortable transition to a new platform. Overall, the chatbot and new website serves to attract potential visitors and volunteers through an easier user experience. </p>
             </li>
           </ol>
-
         </div>
       </div>
+            </div>
+
+      <!-- ========================================
+           OLD WEBSITE SCREENSHOT SLIDESHOW
+           ======================================== -->
+      <div class="website-showcase">
+
+        <div class="website-showcase-header">
+          <span class="eyebrow">Before the Redesign</span>
+          <h3>The Original Princess Vlei Website</h3>
+          <p>
+            These screenshots show the original website before our team
+            reorganized and refactored its design, navigation, and content.
+          </p>
+        </div>
+
+        <div class="website-slider" id="websiteSlider">
+
+          <!-- Slide 1 -->
+          <div class="website-slide active">
+            <img
+              src="images\Screenshot 2026-07-24 000323.png"
+              alt="Screenshot of the original Princess Vlei homepage"
+            >
+            <div class="website-slide-caption">
+              Original Princess Vlei homepage
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="website-slide">
+            <img
+              src="images\Screenshot 2026-07-24 000358.png"
+              alt="Screenshot of the original Princess Vlei navigation"
+            >
+            <div class="website-slide-caption">
+              Original website navigation and page layout
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="website-slide">
+            <img
+              src="images\Screenshot 2026-07-24 000413.png"
+              alt="Screenshot of an original Princess Vlei content page"
+            >
+            <div class="website-slide-caption">
+              Original content-page design
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="website-slide">
+            <img
+              src="images\Screenshot 2026-07-24 000423.png"
+              alt="Screenshot of the original Princess Vlei mobile layout"
+            >
+            <div class="website-slide-caption">
+              Original article layout before refactoring
+            </div>
+          </div>
+
+          <!-- Previous and next arrows -->
+          <button
+            class="website-slider-arrow website-slider-prev"
+            id="websitePrev"
+            type="button"
+            aria-label="Previous screenshot"
+          >
+            &#10094;
+          </button>
+
+          <button
+            class="website-slider-arrow website-slider-next"
+            id="websiteNext"
+            type="button"
+            aria-label="Next screenshot"
+          >
+            &#10095;
+          </button>
+        </div>
+
+        <!-- Navigation dots -->
+        <div class="website-slider-dots" id="websiteSliderDots">
+          <button class="website-slider-dot active" type="button" aria-label="View screenshot 1"></button>
+          <button class="website-slider-dot" type="button" aria-label="View screenshot 2"></button>
+          <button class="website-slider-dot" type="button" aria-label="View screenshot 3"></button>
+          <button class="website-slider-dot" type="button" aria-label="View screenshot 4"></button>
+        </div>
+
+        <!-- Link to the new website -->
+        <div class="website-button-wrap">
+          <a
+            href="https://princessvleiwebsite.pv-forum.workers.dev/"
+            class="website-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore the Refactored Website
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
     </div>
   </section>
 
@@ -495,7 +762,7 @@
           <div class="week-card">
             <span class="week-tag">Week 1 · Arrival</span>
             <h3>Adapting to a New Environment</h3>
-            <p>As I am used to traveling, I'm comfortable being in places I'm unfamiliar with. This first week was for exploring and understanding. As a class, we were able to detach from our homes and experience South Africa as global citizens of the world. Guest speaker Aika Swai presented a capturing talk to help us understand the cultural and historical context of the South Africa we were stepping into. It was a pivotal opening for my trip that made me understand to let go of idea of "helping" and take on a role that focuses on listening. Our first client meeting consisted of Princess Vlei staff taking my team for a walking tour through the conservation area. They showed us local and endangered plants and animals and explained the cultural significance of the area. Through this experience, my teammates and I were able to connect with the rich history of the Vlei and understand the purpose of retaining and expanding the community that the Vlei thrives on. Overall, this week served as an introduction into what we were going to build, who was this product meant for, and how we were going to establish ourselves as a team. By the end of the week, we presented our Project Pitch to Dr. Thomas, EDU Africa, and our classmates.</p>
+            <p>As I am used to traveling, I'm comfortable being in places I'm unfamiliar with. This first week was for exploring and understanding. As a class, we were able to detach from our homes and experience South Africa as global citizens of the world. Guest speaker Aika Swai presented a capturing talk to help us understand the cultural and historical context of the South Africa we were stepping into. It was a pivotal opening for my trip that made me understand how to let go of the idea of "helping" and take on a role that focuses on listening. Our first client meeting consisted of Princess Vlei staff taking my team for a walking tour through the conservation area. They showed us local and endangered plants and animals and explained the cultural significance of the area. Through this experience, my teammates and I were able to connect with the rich history of the Vlei and understand the purpose of retaining and expanding the community that the Vlei thrives on. Overall, this week served as an introduction into what we were going to build, who this product meant for, and how we were going to establish ourselves as a team. By the end of the week, we presented our Project Pitch to Dr. Thomas, EDU Africa, and our classmates.</p>
           </div>
         </div>
         <div class="week">
@@ -517,15 +784,15 @@
           <div class="week-card">
             <span class="week-tag">Week 3 · Building</span>
             <h3>From Idea to Prototype</h3>
-            <p>After recieving the Microsoft Azure for Nonprofits grant, we switched our prototype chatbot model to a efficent, reliable, and cost-effective 
+            <p>After receiving the Microsoft Azure for Nonprofits grant, we switched our prototype chatbot model to an efficent, reliable, and cost-effective 
               DeepSeek model. I began constructing a new website and experimenting with how to restructure the visual interface while protecting each page's contents. 
               Our program had the honor of touring Stellenbosch University and sharing 
               a braai with their students. It was such a welcoming and warming experience to get to talk 
               and relate to university students halfway across the world from you. As a team lead, I had 
-              the privledge of speaking at this braai to introduce myself, my team, and the project we 
+              the privilege of speaking at this braai to introduce myself, my team, and the project we 
               were building. Our program also visited a local highschool, Curro Delft, and participated 
               with students to compete in a brainstorming contest. We were tasked to collaborate amongst
-              each other to conceptulize and pitch an idea for an application that would help local South
+              each other to conceptualize and pitch an idea for an application that would help local South
               African Communities. My group consisted of 2 UF and 3 Curro Delft students, and together 
               our idea won first place. My classmate and I took the time to listen to the students and 
               understand relevant struggles they experience themselves. It taught us as tourists in a 
@@ -535,7 +802,7 @@
         <div class="week">
           <div class="week-card">
             <span class="week-tag">Week 4 · Testing</span>
-            <h3>Overcoming Technical Challenges</h3>
+            <h3>Testing Early and Often</h3>
             <p>After integrating the chatbot into the old website, our team tested the chatbots for
                safety, accuracy, and speed. The clients wanted us to incorporate the ability
                 for the chatbot to give users direct links to INaturalist pages when asking about
@@ -543,11 +810,11 @@
                   photos and locations of wildlife observations. In turn, this source provided relevant information for responses
                   while allowing the chatbot to entice greater user involvement with the local community of the Vlei. As a team,
                   we wanted our chatbot to have consistent responses in style, tone, and relevance. To ensure this, we tested
-                  a plethora of questions and conversations to purposefully find irregularties in our product. In addition, this week also
+                  a plethora of questions and conversations to purposefully find irregularities in our product. In addition, this week also
                   focused on the transfer of website content including photos and links. I began working on User Interface (UI) elements and asking the client
-                  their opinions on colors, fonts, and layouts. This week, our group visted the Amazon Web Services (AWS) Skills Center in Cape Town. Together, we participated in 
+                  their opinions on colors, fonts, and layouts. This week, our group visited the Amazon Web Services (AWS) Skills Center in Cape Town. Together, we participated in 
                   workshops and a prototyping contest utilizing their Kiro AI IDE tool. I collaborated with a team of peers to brainstorm and leverage AI to bring an idea into fruition.
-                  Finalizing our protoype, we presented a product showcase to peers and AWS instructors.
+                  After finalizing our prototype, we presented a product showcase to peers and AWS instructors.
 
                    </p>
           </div>
@@ -562,7 +829,7 @@
               to advertise and provide a clearer role of the chatbot on the website. Making these changes made users notice the chatbot quicker, and 
               realize its purpose upon first glance. Conducting usability tests for my peers allowed me to take inspiration from their clean and useful design elements.
               I was able to put myself in the role of a user and navigate their sites with an open mind and no context. Conducting these tests
-              allowed me to catch glitches and irregularties for my peers, which allowed them to fix issues previously unknown to them.
+              allowed me to catch glitches and irregularities for my peers, which allowed them to fix issues previously unknown to them.
             </p>
           </div>
         </div>
@@ -572,14 +839,14 @@
             <h3>Delivering &amp; Saying Goodbye</h3>
             <p>As a team, we completed our final presentation showcasing our Princess Vlei Chatbot Assistant, and our prototyped refactored website.
               Although our program was ending, progress was still left to be made with the website refactor. The Princess Vlei Assistant was finished and
-              avaliable on the old website for the time being. Our clients were pleased with our completed chatbot and the progress of our new website. They felt prioritized when we demonstrated an admin page
+              available on the old website for the time being. Our clients were pleased with our completed chatbot and the progress of our new website. They felt prioritized when we demonstrated an admin page
               specifically designed for the nontechnical author of the website. The admin page makes an easier transition to a new website
               so the client can upload and edit content in a form they are accustomed to. Being so used to using drag and drop website builders, we did not want to
               overwhelm the client with new technologies. Therefore, we took inspiration from these layouts to build something similar but specific for the new Princess Vlei
               website and their staff. Overall, saying goodbye to people I was seeing everyday for six weeks was the hardest part. Over time, I grew
               strong bonds with my peers. Together, we collaborated, explored, and joked. Interning abroad allowed the perfect mix
               of responsibility, impact, and fun. I was able to collaborate and create a project with a purpose. I was able to show up as both a peer and a friend.
-              Watching everyone else on the program build well-thoughout projects made me proud of the work we completed as a group.
+              Watching everyone else on the program build well-thoughtout projects made me proud of the work we completed as a group.
               
             </p>
           </div>
@@ -630,19 +897,39 @@
 
       <div class="reflection-card">
         <p>
-          [Open with your strongest reflection: what this experience meant to you as a whole.]
+          The strongest lesson learned that I will continue to carry into my
+          professional career is building by first understanding the user.
+          Over the duration of this trip, I truly realized what human-centered computing is and how to
+          aware of the audience when building effective products.
         </p>
         <p>
-          [Middle paragraph: connect the trip to your <strong>academic and professional goals</strong>.
-          How did working on a real project abroad change how you approach problem-solving, teamwork,
-          or your career direction?]
+          Interning for a nonprofit organization in South Africa allowed me to see the role I played in my client's mission. 
+          The clients old website was dated
+          and disorganized. They had been meaning to change their website, but the task of transferring all of its content daunted them.
+          As a team, we overcame this task through the use of AI and scripts to accurately transfer content and build a website shell.
+          I was able to express my creativity to design a satisfying user experience. When we were creating our project, we always
+          considered how we can build new features in a way that centers the user. This meant both the local community and Princess Vlei Staff.
+          We wanted something simple, intuitive, and familiar. As a team, we had to ensure the chatbot, admin page, and new website
+          had strong visual indicators and clear instructions. It felt good to disconnect from my day-to-day life in America and learn how to
+          be open-minded and aware of cultural differences, common skillsets, and user needs. This experience taught me to listen when working 
+          in unfamiliar contexts. Additonally, I learned how to lead and collaborate with a team for 
+          an extended period of time. Thus far, this project has been my longest work. As I'm navigating my computer science career, I found this
+          experience to be an extremely immersive way to advance my computing skills. I worked in new coding languages, developed my first website, and conducted
+          usability tests. Having this experience provides a leg up when entering new courses, internships, and jobs. I now have a greater understanding
+          on the software development process, collaborating with other engineers, meeting with clients to give frequent updates, and presenting project pitches.
+          Not only did this interships provide me with professional skills, but I connected to a new people, experiences, and cultures. It felt amazing
+          to explore new landscapes and experience an unfamilar place for six weeks. Cape Town taught me to be more open minded, curious, and out going.
+          It was truly an eye-opening and powerful experience.
         </p>
         <blockquote>
-          "[A short, memorable takeaway or quote that captures your experience in one line.]"
+          During our final presentation, a peer from another team said that coding is a very human thing
+          because it is creating with the intention of reaching other people and being of use.
         </blockquote>
         <p>
-          [Closing paragraph: what you'll carry forward, how you've grown, and why international
-          engagement matters to you now.]
+          In final consideration, this study abroad internship provided me with the motivation to continue being a global citizen of the world
+          and using my skills to build useful tools. I enjoyed creating something to make the clients workflow easier and playing a role in Princess Vlei's rich community
+          envolvement and determination to protect the natural space. In Cape Town, I fully immersed myself in a new city and allowed myself to appreciate the unknown. Overall,
+          I find adjusting to new enviroments and being curious easy and fufilling, and this experience played a pivotal role in that realization.
         </p>
       </div>
     </div>
@@ -655,7 +942,7 @@
         <h2>With Gratitude</h2>
         <p>
           Special thank you to <strong>Dr. Sanethia Thomas</strong>, <strong>Ping Neo</strong>,
-          <strong>Naomi Harrell</strong>, <strong>EDU Africa</strong>, <strong>my amazing team members</strong> and
+          <strong>Naomi Harrell</strong>, <strong>EDU Africa</strong>, <strong>my Royal Gator AI team members</strong> and
           <strong>the Princess Vlei Forum</strong> for making this experience possible
           and unforgettable.
         </p>
@@ -668,11 +955,11 @@
     <div class="container">
       <div class="brand" style="justify-content:center; color:#fff;">Cape Town <span style="color:var(--uf-orange);">· ePortfolio</span></div>
       <div class="socials">
-        <a href="mailto:youremail@ufl.edu">Email</a>
-        <a href="[linkedin.com](https://www.linkedin.com/in/your-profile)" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="[github.com](https://github.com/your-username)" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:kyrapaim@ufl.edu">Email</a>
+        <a href="https://www.linkedin.com/in/kyra-paim-745060248" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/kyrapaim" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <p>© <span id="year"></span> [Your Name] · University of Florida International Center</p>
+      <p>© <span id="year"></span> Kyra Paim · University of Florida International Center</p>
     </div>
   </footer>
 
@@ -713,6 +1000,58 @@
     lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 
+    // --- Old website screenshot slideshow ---
+    const websiteSlides = document.querySelectorAll(".website-slide");
+    const websiteDots = document.querySelectorAll(".website-slider-dot");
+    const websitePrev = document.getElementById("websitePrev");
+    const websiteNext = document.getElementById("websiteNext");
+
+    let websiteSlideIndex = 0;
+
+    function showWebsiteSlide(index) {
+      // Go to the last slide when clicking left from slide 1
+      if (index < 0) {
+        websiteSlideIndex = websiteSlides.length - 1;
+      }
+      // Return to slide 1 after the last slide
+      else if (index >= websiteSlides.length) {
+        websiteSlideIndex = 0;
+      }
+      else {
+        websiteSlideIndex = index;
+      }
+
+      websiteSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle(
+          "active",
+          slideIndex === websiteSlideIndex
+        );
+      });
+
+      websiteDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle(
+          "active",
+          dotIndex === websiteSlideIndex
+        );
+      });
+    }
+
+    websitePrev.addEventListener("click", () => {
+      showWebsiteSlide(websiteSlideIndex - 1);
+    });
+
+    websiteNext.addEventListener("click", () => {
+      showWebsiteSlide(websiteSlideIndex + 1);
+    });
+
+    websiteDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showWebsiteSlide(index);
+      });
+    });
+
+// Display the first slide when the page loads
+showWebsiteSlide(0);
     // --- 3. Auto-update footer year ---
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
